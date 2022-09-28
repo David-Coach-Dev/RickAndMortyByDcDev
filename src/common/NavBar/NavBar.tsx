@@ -1,24 +1,26 @@
 import { AppBar, Box, Button, Container, Grid, Stack, styled, Toolbar, Tooltip, TooltipProps, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 import { AlertVoice } from '../AlertVoice';
+import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
   export const NavBar: React.FC<{}> = () => {
   const navigate = useNavigate();
   const logo = "https://i.imgur.com/QpYX7Oz.png";
-  const title = 'Api the Rick and Morty By Dc Dev   ';
+  const msn = 'Api the Rick and Morty By Dc Dev   ';
   const handleAlert =(event: React.MouseEvent<HTMLElement>) => {
-    AlertVoice(title);
+    AlertVoice(msn);
   };
   const handleAlertLogin =(event: React.MouseEvent<HTMLElement>) => {
-    AlertVoice('Login');
-    };
-    const handleAlertR =(event: React.MouseEvent<HTMLElement>) => {
-    AlertVoice('Registro');
+    AlertVoice('Login de usuario');
+  };
+  const handleAlertRes =(event: React.MouseEvent<HTMLElement>) => {
+    AlertVoice('Registro de usuario');
   };
   const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))`
   & .MuiTooltip-tooltip {
-    background: navy;
+    background: primary;
   }
   `;
   return (
@@ -35,13 +37,13 @@ import { AlertVoice } from '../AlertVoice';
               alignItems='center'
             >
               <Grid item>
-                {logo}
+                <img src={logo} alt="logo" />
               </Grid>
               <Grid item>
                 <Typography
                   variant="h6"
                   onMouseEnter={handleAlert}>
-                  {title}
+                  {msn}
                 </Typography>
               </Grid>
               <Grid item>
@@ -49,7 +51,7 @@ import { AlertVoice } from '../AlertVoice';
                   direction='row'
                   spacing={2}
                 >
-                  <StyledTooltip title="I am navy">
+                  <StyledComponentsDcDev msg='Login de usuario'>
                     <Button
                       variant='contained'
                       onClick={() => navigate('login')}
@@ -57,13 +59,15 @@ import { AlertVoice } from '../AlertVoice';
                     >
                         Login
                     </Button>
-                  </StyledTooltip>
-                  <Button
-                    variant='outlined'
-                    onMouseEnter={handleAlertR}
-                  >
-                    Register
-                  </Button>
+                  </StyledComponentsDcDev>
+                  <StyledComponentsDcDev msg='registro de usuario'>
+                    <Button
+                      variant='outlined'
+                      onMouseEnter={handleAlertRes}
+                    >
+                      Register
+                    </Button>
+                  </StyledComponentsDcDev>
                 </Stack>
               </Grid>
             </Grid>
