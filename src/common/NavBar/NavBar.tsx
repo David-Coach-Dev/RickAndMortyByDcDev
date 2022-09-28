@@ -16,6 +16,9 @@ export const NavBar: React.FC<{}> = () => {
               alignItems='center'
             >
               <Grid item>
+               <img src="../../assets/img/favicon-ram-32x32.png" alt="Vite" width="50" height="50"/>
+              </Grid>
+              <Grid item>
                 <Typography variant="h6" >
                   Rick and Morty By Dc Dev.
                 </Typography>

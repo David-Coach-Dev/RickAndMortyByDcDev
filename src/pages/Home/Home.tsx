@@ -8,7 +8,7 @@ const Home: React.FC<HomeInterface> = () => {
 	useEffect(() => {
 		characters.getById({ id: 1 }).then((r) => {
 			console.log(r.data);
-			getSuccess('Bienvenidos a Dc Dev');
+			getSuccess('Bienvenidos a Api de Rick And Morty por Dc Dev');
 		}).catch((e) => {
 			getError('Error : ' + e.message);
 		});
@@ -18,15 +18,15 @@ const Home: React.FC<HomeInterface> = () => {
 		getError,
 	} = useNotification();
 	const handleClick = () => {
-		getSuccess("👋 Bienvenidos a Dc Dev.");
+		getSuccess("👋 Bienvenidos a Api de Rick And Morty por Dc Dev");
 	};
 	return(
 		<Container
 			maxWidth='xl'
 		>
 			<HeaderComponent
-				title={'👋 Dev'}
-				description={'Bienvenidos a Dc Dev'}
+				title={"👋 Dev's"}
+				description={'Api de Rick And Morty por Dc Dev'}
 				element={
 					<Button
 						fullWidth
