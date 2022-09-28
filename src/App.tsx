@@ -1,9 +1,17 @@
+import './App.css';import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import { NotificationProvider } from './context';
+import { AppRouter } from './Router';
 function App() {
+  const [theme, setTheme] = useState("dark");
+  let themeOp=localStorage.getItem("theme") === null ? "dark":localStorage.getItem("theme");
   return (
-    <div>
-        <h1>Rick and Morty Api. </h1>
-    </div>
-  )
+    <NotificationProvider>
+      <BrowserRouter>
+        <AppRouter/>
+      </BrowserRouter>
+    </NotificationProvider>
+  );
 }
 export default App

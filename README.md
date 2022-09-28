@@ -1,6 +1,8 @@
-<h1 align="center">Rick And Morty by Dc Dev.</h1>
+<h1 align="center">Rick And Morty By Dc Dev.</h1>
 <p align="center">
-App que utiliza la api de Rick and Morty y presenta la informacion en ella contenida para poder el reto  la Hac.
+App que utiliza la api de Rick and Morty, para el Challenge de la Hackathon de Gentleman Programming.</p>
+<p align="center">
+Mas información <a href="https://gentleman-programming-hackathon.netlify.app/ricknmorty-challenge" target="_blank" rel="https://gentleman-programming-hackathon.netlify.app/ricknmorty-challenge" >aquí</a>
 </p>
 <h1></h1>
 <h2 align="center">Herramientas</h2>
