@@ -1,4 +1,5 @@
 import { characters } from '@/api/endPoint/characters';
+import { AlertVoice } from '@/common';
 import { HeaderComponent } from '@/components';
 import { useNotification } from '@/context';
 import { Button, Container } from '@mui/material';
@@ -12,7 +13,10 @@ const Home: React.FC<HomeInterface> = () => {
 		}).catch((e) => {
 			getError('Error : ' + e.message);
 		});
-	},[]);
+	}, []);
+	const handleAlertLogin =(event: React.MouseEvent<HTMLElement>) => {
+    AlertVoice('Login');
+  };
 	const {
 		getSuccess,
 		getError,
@@ -33,6 +37,7 @@ const Home: React.FC<HomeInterface> = () => {
 						onClick={handleClick}
 						variant="contained"
 						color="primary"
+						onMouseEnter={handleAlertLogin}
 					>
 						Login
 					</Button>
