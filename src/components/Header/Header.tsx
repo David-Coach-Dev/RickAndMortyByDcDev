@@ -1,14 +1,12 @@
 import { AlertVoice } from '@/common';
 import { Box, Divider, Grid, Typography, Alert } from '@mui/material';
+import { title } from 'process';
 type HeaderProps = {
 	title: string;
 	description: string;
 	alert: string;
 	element?: React.ReactNode | null;
 };
-const handleAlertDev =(event: React.MouseEvent<HTMLElement>) => {
-	AlertVoice(alert);
-	};
 export const HeaderComponent: React.FC<HeaderProps> = (
 	{
 		title,
