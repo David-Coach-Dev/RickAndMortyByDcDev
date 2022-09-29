@@ -1,6 +1,5 @@
 import { AlertVoice } from '@/common';
-import { Box, Divider, Grid, Typography, Alert } from '@mui/material';
-import { title } from 'process';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 type HeaderProps = {
 	title: string;
 	description: string;
