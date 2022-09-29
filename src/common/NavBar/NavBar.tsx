@@ -5,7 +5,6 @@ import { AlertVoice } from '../AlertVoice';
 import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
   export const NavBar: React.FC<{}> = () => {
   const navigate = useNavigate();
-  const logo = "../../assets/img/rickandmorty.jpg";
   const msn = 'Api the Rick and Morty By Dc Dev   ';
   const handleAlert =(event: React.MouseEvent<HTMLElement>) => {
     AlertVoice(msn);
@@ -37,7 +36,7 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
               alignItems='center'
             >
               <Grid item>
-                <img src='../../assets/img/favicon-ram-32x32.png' alt="logo" />
+                <img src="../../assets/img/favicon-ram-32x32.png" alt="logo" />
               </Grid>
               <Grid item>
                 <Typography
