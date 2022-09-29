@@ -1,18 +1,28 @@
-import { Box, Divider, Grid, Typography } from '@mui/material';
+import { AlertVoice } from '@/common';
+import { Box, Divider, Grid, Typography, Alert } from '@mui/material';
 type HeaderProps = {
 	title: string;
 	description: string;
+	alert: string;
 	element?: React.ReactNode | null;
 };
+const handleAlertDev =(event: React.MouseEvent<HTMLElement>) => {
+	AlertVoice(alert);
+	};
 export const HeaderComponent: React.FC<HeaderProps> = (
 	{
 		title,
 		description,
-		element
+		element,
+		alert
 	}
 ) => {
+	const handleAlertDev =(event: React.MouseEvent<HTMLElement>) => {
+	AlertVoice(alert);
+	};
+
 	return (
-		<div>
+		<>
 			<Box
 				sx={{
 					width: '100%',
@@ -37,6 +47,7 @@ export const HeaderComponent: React.FC<HeaderProps> = (
 							<Grid item>
 								<Typography
 									variant='h1'
+									onMouseEnter={handleAlertDev}
 								>
 									{title}
 								</Typography>
@@ -62,7 +73,7 @@ export const HeaderComponent: React.FC<HeaderProps> = (
 				</Grid>
 			</Box>
 			<Divider/>
-		</div>
+		</>
 	);
 };
 

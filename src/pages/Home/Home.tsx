@@ -15,8 +15,8 @@ const Home: React.FC<HomeInterface> = () => {
 		});
 	}, []);
 	const handleAlertLogin =(event: React.MouseEvent<HTMLElement>) => {
-    AlertVoice('Login');
-  };
+		AlertVoice('Login');
+	};
 	const {
 		getSuccess,
 		getError,
@@ -32,6 +32,7 @@ const Home: React.FC<HomeInterface> = () => {
 				<HeaderComponent
 					title={"👋 Dev's"}
 					description={'Api de Rick And Morty por Dc Dev'}
+					alert='hola devs'
 					element={
 						<Button
 							fullWidth
