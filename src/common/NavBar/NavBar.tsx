@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Container, Grid, Stack, styled, Toolbar, Tooltip, TooltipProps, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import  Logo from '../../assets/img/RinkAndMorty.jpg';
+import  Logo from '../../assets/img/rickandMorty.png';
 import { AlertVoice } from '../AlertVoice';
 import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
   export const NavBar: React.FC<{}> = () => {
@@ -36,7 +36,11 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
               alignItems='center'
             >
               <Grid item>
-                <img src={Logo} alt="logo" width="50" height="50" />
+                  <Stack
+                    direction='row'
+                  >
+                    <img src={Logo} alt="logo" width="50" height="50" />
+                  </Stack>
               </Grid>
               <Grid item>
                 <Typography
