@@ -3,7 +3,7 @@ export interface StyledComponentsDcDevInterface {
 	children: JSX.Element;
 	msg: string;
 }
-const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
+const StyledTooltip = styled(({ className, ...props }: TooltipProps): JSX.Element => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))`
   & .MuiTooltip-tooltip {
