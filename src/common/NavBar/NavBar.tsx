@@ -37,7 +37,7 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
               alignItems='center'
             >
               <Grid item>
-                <img src={logo} alt="logo" width="50" height="50"/>
+                <img src={logo} alt="logo" width="50px" height="50px"/>
               </Grid>
               <Grid item>
                 <Typography
