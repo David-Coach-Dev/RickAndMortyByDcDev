@@ -6,14 +6,17 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
   export const NavBar: React.FC<{}> = () => {
   const navigate = useNavigate();
   const msn = 'Api the Rick and Morty By Dc Dev   ';
-  const handleAlert =(event: React.MouseEvent<HTMLElement>) => {
+  const AlertHome =(event: React.MouseEvent<HTMLElement>) => {
     AlertVoice(msn);
   };
-  const handleAlertLogin =(event: React.MouseEvent<HTMLElement>) => {
+  const AlertLogin =(event: React.MouseEvent<HTMLElement>) => {
     AlertVoice('Login de usuario');
   };
-  const handleAlertRes =(event: React.MouseEvent<HTMLElement>) => {
+  const AlertRegister =(event: React.MouseEvent<HTMLElement>) => {
     AlertVoice('Registro de usuario');
+  };
+  const AlertLogo =(event: React.MouseEvent<HTMLElement>) => {
+    AlertVoice('Logo de app');
   };
   const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -38,14 +41,22 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
               <Grid item>
                   <Stack
                     direction='row'
-                  >
-                    <img src={Logo} alt="logo" width="50" height="50" />
+                >
+                  <StyledComponentsDcDev msg='Logo de app'>
+                    <img
+                      src={Logo}
+                      alt="logo"
+                      width="50"
+                      height="50"
+                      onMouseEnter={AlertLogo}
+                    />
+                  </StyledComponentsDcDev>
                   </Stack>
               </Grid>
               <Grid item>
                 <Typography
                   variant="h6"
-                  onMouseEnter={handleAlert}>
+                  onMouseEnter={AlertHome}>
                   {msn}
                 </Typography>
               </Grid>
@@ -54,12 +65,13 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
                   direction='row'
                   spacing={2}
                 >
-                  <buton
+                  
                   <StyledComponentsDcDev msg='Login de usuario'>
                     <Button
                       variant='contained'
                       onClick={() => navigate('login')}
-                      onMouseEnter={handleAlertLogin}
+                      onMouseEnter={AlertLogin}
+                      onFocus={AlertLogin}
                     >
                         Login
                     </Button>
@@ -67,7 +79,7 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
                   <StyledComponentsDcDev msg='registro de usuario'>
                     <Button
                       variant='outlined'
-                      onMouseEnter={handleAlertRes}
+                      onMouseEnter={AlertRegister}
                     >
                       Register
                     </Button>

@@ -1,5 +1,5 @@
 import { characters } from '@/api/endPoint/characters';
-import { AlertVoice, StyledComponentsDcDev } from '@/common';
+import { AlertVoice, AutoCompletedList, StyledComponentsDcDev } from '@/common';
 import { HeaderComponent } from '@/components';
 import { useNotification } from '@/context';
 import { Button, Container } from '@mui/material';
@@ -28,23 +28,23 @@ const Home: React.FC<HomeInterface> = () => {
 		<Container
 			maxWidth='xl'
 		>
-			<StyledComponentsDcDev msg=''>
-				<HeaderComponent
-					title={"👋 Dev's"}
-					description={'Api de Rick And Morty por Dc Dev'}
-					alert='hola devs'
-					element={
-						<Button
-							fullWidth
-							onClick={handleClick}
-							variant="contained"
-							color="primary"
-							onMouseEnter={handleAlertLogin}
-						>
-							Login
-						</Button>
-					}/>
-			</StyledComponentsDcDev>
+			<HeaderComponent
+				title={"👋 Dev's"}
+				description={'Api de Rick And Morty por Dc Dev'}
+				alert='hola devs'
+				element={
+					<Button
+						fullWidth
+						onClick={handleClick}
+						variant="contained"
+						color="primary"
+						onMouseEnter={handleAlertLogin}
+					>
+						Login
+					</Button>
+				}
+			/>
+			<AutoCompletedList/>
 		</Container>
 	);
 };
