@@ -1,52 +1,82 @@
 import { characters } from '@/api';
 import { useNotification } from '@/context';
-import { Autocomplete, Stack, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { TypeCharacter } from '@/interface';
+import { Autocomplete, Box, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 export interface AutoCompletedListInterface {
-	name?: string;
-	species?: String;
 }
-let aux = [];
-const AutoCompletedList: React.FC<AutoCompletedListInterface> = () => {
-	const [data, setData] = useState([])
-	const {
-		getSuccess,
-		getError,
-	} = useNotification();
-	const handleClick = () => {
-		//getSuccess("choose a character");
-	};
-	useEffect(() => {
-		for (let i = 1; i < 11; i++) {
-			characters.getById({ id: i }).then((r) => {
-				console.log('name : ', r.data.name);
-				setData({ ...data  ,[r.data.name]: string(r.data.name)});
-				console.log('data : ', data);
-				//handleClick();
-			}).catch((e) => {
-				getError('Error : ' + e.message);
-			});
-		}
-	}, []);
-	const defaultProps = {
-    options: data,
-    getOptionLabel: (option: AutoCompletedListInterface) => option.name,
-	};
-  // const flatProps = {
-	// 	options: data.map((option) => option.name),
-  // };
-	const [value, setValue] = React.useState<AutoCompletedListInterface | null>(null);
+const AutoCompletedList: React.FC<TypeCharacter> = () => {
+  const [allCharacters, setAllCharacters] = useState<TypeCharacter[]>();
+  useEffect(() => {
+    characters
+      .getAll({ page: 1 })
+      .then((r) => {
+        setAllCharacters(r.data.results);
+        console.log("datos -> ", r.data.results);
+        getSuccess("Datos cargados");
+        handleClick();
+      })
+      .catch((e) => {
+        getError("Error : " + e.message);
+      });
+  }, []);
+  const { getSuccess, getError } = useNotification();
+  const handleClick = () => {
+    //getSuccess("choose a character");
+  };
+  const defaultProps = {
+    options: allCharacters,
+    getOptionLabel: (option: TypeCharacter) => option.name,
+  };
 	return (
-	<Stack spacing={1} sx={{ width: 300 }}>
-		<Autocomplete
-			{...defaultProps}
-			id="select"
-			disableCloseOnSelect
-			renderInput={(params) => (
-				<TextField {...params} label="Select one character" variant="standard" />
-			)}
-			/>
-	</Stack>
+    <>
+      <Autocomplete
+        {...defaultProps}
+        id="disable-close-on-select"
+        disableCloseOnSelect
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="escoja un personaje"
+            variant="standard"
+          />
+        )}
+      />
+      <Autocomplete
+        id="disable-close-on-select"
+        sx={{ width: 300 }}
+        options={allCharacters!}
+        autoHighlight
+        getOptionLabel={(option) => option.name}
+        renderOption={(props, option) => (
+          <Box
+            component="li"
+            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+            {...props}
+          >
+            <img
+              loading="lazy"
+              width="20"
+              src={option.image}
+              srcSet={option.image}
+              alt=""
+            />
+            {option.name}
+          </Box>
+        )}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Choose a country"
+            variant="standard"
+            inputProps={{
+              ...params.inputProps,
+              autoComplete: "new-password", // disable autocomplete and autofill
+            }}
+          />
+        )}
+      />
+    </>
   );
 };
 
