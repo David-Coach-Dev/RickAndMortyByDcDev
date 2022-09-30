@@ -65,13 +65,11 @@ import { StyledComponentsDcDev } from '../StyledComponentsDcDev';
                   direction='row'
                   spacing={2}
                 >
-                  
                   <StyledComponentsDcDev msg='Login de usuario'>
                     <Button
                       variant='contained'
                       onClick={() => navigate('login')}
                       onMouseEnter={AlertLogin}
-                      onFocus={AlertLogin}
                     >
                         Login
                     </Button>
