@@ -5,7 +5,7 @@ import { Autocomplete, Box, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 export interface AutoCompletedListInterface {
 }
-const AutoCompletedList: React.FC<TypeCharacter> = () => {
+const AutoCompletedList: React.FC<AutoCompletedListInterface> = () => {
   const [allCharacters, setAllCharacters] = useState<TypeCharacter[]>();
   useEffect(() => {
     characters
@@ -28,20 +28,7 @@ const AutoCompletedList: React.FC<TypeCharacter> = () => {
     options: allCharacters,
     getOptionLabel: (option: TypeCharacter) => option.name,
   };
-	return (
-    <>
-      <Autocomplete
-        {...defaultProps}
-        id="disable-close-on-select"
-        disableCloseOnSelect
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="escoja un personaje"
-            variant="standard"
-          />
-        )}
-      />
+  return (
       <Autocomplete
         id="disable-close-on-select"
         sx={{ width: 300 }}
@@ -76,7 +63,6 @@ const AutoCompletedList: React.FC<TypeCharacter> = () => {
           />
         )}
       />
-    </>
   );
 };
 
