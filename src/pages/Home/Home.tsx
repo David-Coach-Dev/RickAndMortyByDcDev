@@ -85,7 +85,7 @@ const Home: React.FC<{}> = () => {
         </Stack>
       </div>
       <Stack spacing={2}>
-        <Pagination count={`${maxPag}`} page={pag} onChange={handleChange} />
+        <Pagination count={maxPag} page={pag} onChange={handleChange} />
       </Stack>
     </Container>
   );
