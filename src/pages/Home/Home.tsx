@@ -35,58 +35,71 @@ const Home: React.FC<{}> = () => {
   };
   return (
     <Container maxWidth="xl">
-      <Stack spacing={2}>
-        <HeaderComponent
-          title={"👋 Dev's"}
-          description={"Api de Rick And Morty por Dc Dev"}
-          alert="hola devs"
-          element={
-            <>
-              <AutoCompletedList />
-            </>
-          }
-        />
-      </Stack>
-      <Stack spacing={2}>
-        <Button
-          fullWidth
-          onClick={handleClick}
-          variant="contained"
-          color="primary"
-          onMouseEnter={AlertLogin}
-        >
-          Login
-        </Button>
-      </Stack>
-      <Stack spacing={2}>
-        <Typography>Page: {pag}</Typography>
-      </Stack>
+      <HeaderComponent
+        title={"👋 Dev's"}
+        description={"Api de Rick And Morty por Dc Dev"}
+        alert="hola devs"
+        element={
+          <>
+            <AutoCompletedList />
+          </>
+        }
+      />
+      <Button
+        fullWidth
+        sx={{ mt: 3, mb: 3 }}
+        onClick={handleClick}
+        variant="contained"
+        color="primary"
+        onMouseEnter={AlertLogin}
+      >
+        Login
+      </Button>
+      <Typography sx={{ mt: 3, mb: 3 }}>Page: {pag}</Typography>
       <div>
-        <Stack spacing={2}>
-          {allCharacters?.length !== 0 ? (
-            <Box>
+        {allCharacters?.length !== 0 ? (
+          <Box>
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
+            >
               {allCharacters?.map((character) => (
-                <Grid container direction="row" spacing={2}>
-                  <Grid item xs={3}>
-                    <CardCharacter
-                      key={character.toString()}
-                      image={character.image}
-                      name={character.name}
-                      species={character.species}
-                      status={character.status}
-                      />
-                  </Grid>
+                <Grid item xs={3}>
+                  <CardCharacter
+                    key={character.toString()}
+                    image={character.image}
+                    name={character.name}
+                    species={character.species}
+                    status={character.status}
+                  />
                 </Grid>
               ))}
-            </Box>
-          ) : (
-            ""
-            )}
-        </Stack>
+            </Grid>
+          </Box>
+        ) : (
+          ""
+        )}
       </div>
-      <Stack spacing={2}>
-        <Pagination count={maxPag} page={pag} onChange={handleChange} />
-      </Stack>
+      <Box>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs={3}>
+            <Pagination
+              sx={{ mt: 3, mb: 3 }}
+              count={maxPag}
+              page={pag}
+              onChange={handleChange}
+            />
+          </Grid>
+        </Grid>
+      </Box>
     </Container>
   );
 };
