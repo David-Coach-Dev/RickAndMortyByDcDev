@@ -70,6 +70,8 @@ const Home: React.FC<{}> = () => {
                     name={character.name}
                     species={character.species}
                     status={character.status}
+                    type={character.type}
+                    url={character.url}
                   />
                 </Grid>
               ))}

@@ -31,6 +31,8 @@ export interface CardCharacterInterface {
   name: string;
   species: string;
   status: string;
+  type:     string;
+  url:   string;
 }
 const style = {
   position: "absolute" as "absolute",
@@ -53,6 +55,8 @@ const CardCharacter: React.FC<CardCharacterInterface> = ({
   name,
   species,
   status,
+  type,
+  url,
 }) => {
   const [open, setOpen] = useState(false);
   const labels: { [index: string]: string } = {
@@ -119,7 +123,7 @@ const CardCharacter: React.FC<CardCharacterInterface> = ({
           aria-describedby="parent-modal-description"
         >
           <Box sx={{ ...style, width: 800 }}>
-            <ImageList sx={{ width: 750, height: 550 }}>
+            <ImageList sx={{ width: 750, height: 600 }}>
               <ImageListItem key="Subheader" cols={2}>
                 <ListSubheader component="div">
                   <Typography color ="primary" align="center" variant="h4">{name}</Typography>
@@ -134,11 +138,11 @@ const CardCharacter: React.FC<CardCharacterInterface> = ({
                 />
                 <ImageListItemBar
                   title={name}
-                  subtitle={status}
+                  subtitle={url}
                   actionIcon={
                     <>
                       <IconButton
-                        sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                        sx={{ color: "rgba(0, 255, 55, 0.54)" , mt: 3 }}
                         aria-label={`info about ${name}`}
                       ></IconButton>
                       <div>
@@ -170,14 +174,15 @@ const CardCharacter: React.FC<CardCharacterInterface> = ({
                   <Card>
                     <CardHeader
                       title=
-                        <Typography color ="primary" variant="h4" sx={{ mt: 2 }}>
+                        <Typography color ="primary" variant="h4" sx={{ mt: 3 }}>
                           Informacion
                         </Typography>
                     />
                     <CardContent>
-                      <Divider sx={{ mt: 3 }} color="primary" />
-                      <Typography sx={{ mt: 3 }}>id: {id}</Typography>
+                      <Divider sx={{ mt: 2 }} color="primary" />
+                      <Typography sx={{ mt: 3 }}>Id: {id}</Typography>
                       <Typography sx={{ mt: 3 }}>Especie: {species}</Typography>
+                      <Typography sx={{ mt: 3 }}>Type: {type}</Typography>
                       <Typography sx={{ mt: 3 }}>Genero: {gender}</Typography>
                       <Typography sx={{ mt: 3 }}>Estado: {status}</Typography>
                       <Typography sx={{ mt: 3 }}>Creado: {created.toString()}</Typography>
@@ -209,7 +214,7 @@ const CardCharacter: React.FC<CardCharacterInterface> = ({
                           }
                         />
                         {value !== null && (
-                          <Box sx={{ ml: 2 }}>
+                          <Box sx={{ ml: 4 }}>
                             {labels[hover !== -1 ? hover : value]}
                           </Box>
                         )}
