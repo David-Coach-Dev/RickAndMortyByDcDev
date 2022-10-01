@@ -1,5 +1,5 @@
 import { characters } from "@/api";
-import { AlertVoice, AutoCompletedList } from "@/common";
+import { AlertVoice } from "@/common";
 import { CardCharacter, HeaderComponent } from "@/components";
 import { useNotification } from "@/context";
 import { TypeCharacter } from "@/interface";
@@ -37,7 +37,6 @@ const Home: React.FC<{}> = () => {
         alert="hola devs"
         element={
           <>
-            <AutoCompletedList />
           </>
         }
       />
