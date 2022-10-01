@@ -63,12 +63,14 @@ const Home: React.FC<{}> = () => {
               {allCharacters?.map((character) => (
                 <Grid item xs={3}>
                   <CardCharacter
-                    key={character.toString()}
+                    created={character.created}
+                    gender={character.gender}
+                    id={character.id}
                     image={character.image}
+                    key={character.toString()}
                     name={character.name}
                     species={character.species}
                     status={character.status}
-                    gender={character.gender}
                   />
                 </Grid>
               ))}
