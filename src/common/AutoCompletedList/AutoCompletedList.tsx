@@ -12,8 +12,6 @@ const AutoCompletedList: React.FC<AutoCompletedListInterface> = () => {
       .getAll({ page: 1 })
       .then((r) => {
         setAllCharacters(r.data.results);
-        console.log("datos -> ", r.data.results);
-        getSuccess("Datos cargados");
         handleClick();
       })
       .catch((e) => {

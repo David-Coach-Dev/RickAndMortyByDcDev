@@ -3,7 +3,7 @@ import { AlertVoice, AutoCompletedList } from "@/common";
 import { CardCharacter, HeaderComponent } from "@/components";
 import { useNotification } from "@/context";
 import { TypeCharacter } from "@/interface";
-import { Box, Button, Container, Grid, Pagination, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Pagination, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 export interface HomeInterface {}
 const Home: React.FC<{}> = () => {
@@ -19,20 +19,16 @@ const Home: React.FC<{}> = () => {
       .then((r) => {
         setMaxPag(r.data.info.pages);
         setAllCharacters(r.data.results);
-        getSuccess("Datos cargados");
-        handleClick();
+        AlertVoice("pagina numero " + pag);
       })
       .catch((e) => {
         getError("Error : " + e.message);
       });
   }, [pag]);
-  const AlertLogin = (event: React.MouseEvent<HTMLElement>) => {
-    AlertVoice("Login");
+  const AlertPage = (event: React.MouseEvent<HTMLElement>) => {
+    AlertVoice("pagina numero " + pag);
   };
   const { getSuccess, getError } = useNotification();
-  const handleClick = () => {
-    getSuccess("👋 Bienvenidos a Api de Rick And Morty por Dc Dev");
-  };
   return (
     <Container maxWidth="xl">
       <HeaderComponent
@@ -48,14 +44,12 @@ const Home: React.FC<{}> = () => {
       <Button
         fullWidth
         sx={{ mt: 3, mb: 3 }}
-        onClick={handleClick}
+        onClick={AlertPage}
         variant="contained"
         color="primary"
-        onMouseEnter={AlertLogin}
       >
-        Login
+        <Typography variant="h4">Page: {pag}</Typography>
       </Button>
-      <Typography sx={{ mt: 3, mb: 3 }}>Page: {pag}</Typography>
       <div>
         {allCharacters?.length !== 0 ? (
           <Box>
@@ -74,6 +68,7 @@ const Home: React.FC<{}> = () => {
                     name={character.name}
                     species={character.species}
                     status={character.status}
+                    gender={character.gender}
                   />
                 </Grid>
               ))}
